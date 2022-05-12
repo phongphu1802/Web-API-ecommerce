@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e7427cd5-d009-4ed8-a58b-cc07f0493973" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/emall/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/emall/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emall/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/emall/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emall/src/app/app.component.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emall/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/emall/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emall/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/emall/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emall/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/emall/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emall/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/emall/src/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/emall" />
+  </component>
+  <component name="ProjectId" id="28TJbB3tRmz8rBaUNL05E1L6iU5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../emall_server" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e7427cd5-d009-4ed8-a58b-cc07f0493973" name="Changes" comment="" />
+      <created>1651234716746</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1651234716746</updated>
+    </task>
+    <servers />
+  </component>
+</project>
