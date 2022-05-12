@@ -1,0 +1,133 @@
+<!-- pages-title-start -->
+<div class="pages-title section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pages-title-text text-center">
+                    <h2>Cart</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pages-title-end -->
+<!-- cart content section start -->
+<section class="pages cart-page section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="table-responsive padding60">
+                    <table class="wishlist-table text-center">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>quantity</th>
+                                <th>Total Price</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <li *ngFor="let p of typeproduct"><a routerLink='/typeproduct/{{p.typeName}}' routerLinkActive="active"><h5>{{p.typeName}}</h5></a></li> -->
+                            <tr *ngFor="let p of cart">
+                                <td class="td-img text-left">
+                                    <a (click)="goDetail(p['productID']['productID'])"><img src="assets/img/product/{{p['productID']['typeProduct']['typeName']}}/{{p['productID']['images']}}" alt="Add Product" /></a>
+                                    <div class="items-dsc">
+                                        <h5><a (click)="goDetail(p['productID']['productID'])">{{p['productID']['productName']}}</a></h5>
+                                    </div>
+                                </td>
+                                <td>{{p['productID']['price']|currency:"VND":"symbol"}}</td>
+                                <td>
+                                    <form action="#" method="POST">
+                                        <div class="plus-minus">
+                                            <a class="dec qtybutton" (click)="DownSLCart(p['productID']['productID'],p.quantity)">-</a>
+                                            <input type="text" value="{{p.quantity}}" name="qtybutton" class="plus-minus-box">
+                                            <a class="inc qtybutton" (click)="UpSLCart(p['productID']['productID'],p.quantity)">+</a>
+                                        </div>
+                                    </form>
+                                </td>
+                                <td>
+                                    <strong>{{p['productID']['price']*p.quantity|currency:"VND":"symbol"}}</strong>
+                                </td>
+                                <td><i class="mdi mdi-close" title="Remove this product"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top">
+            <!-- <div class="col-sm-6">
+                <div class="single-cart-form padding60">
+                    <div class="log-title">
+                        <h3><strong>coupon discount</strong></h3>
+                    </div>
+                    <div class="cart-form-text custom-input">
+                        <p>Enter your coupon code if you have one!</p>
+                        <form action="mail.php" method="post">
+                            <input type="text" name="subject" placeholder="Enter your code here..." />
+                            <div class="submit-text coupon">
+                                <button type="submit">apply coupon </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-sm-12">
+                <div class="single-cart-form padding60">
+                    <div class="log-title">
+                        <h3><strong>payment details</strong></h3>
+                    </div>
+                    <div class="cart-form-text pay-details table-responsive">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Tổng đơn hàng</th>
+                                    <td>{{total|currency:"VND":"symbol"}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phí giao hàng</th>
+                                    <td>{{15000|currency:"VND":"symbol"}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Vat(2%)</th>
+                                    <td>{{total*2/100|currency:"VND":"symbol"}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="tfoot-padd">Tổng số tiền thanh toán</th>
+                                    <td class="tfoot-padd">{{total+total*2/100+15000|currency:"VND":"symbol"}}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-top">
+            <div class="col-xs-12">
+                <div class="padding60">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4">
+                            <div class="single-cart-form">
+                                <div class="log-title">
+                                    <h3><strong>Địa chỉ giao hàng</strong></h3>
+                                </div>
+                                <div class="cart-form-text custom-input">
+                                    <form action="mail.php" method="post">
+                                        <input type="text" name="country" placeholder="Country" />
+                                        <div class="submit-text">
+                                            <button type="submit" >Đặt hàng</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>	
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cart content section end -->

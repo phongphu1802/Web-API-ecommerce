@@ -1,0 +1,91 @@
+<!-- pages-title-start -->
+<div class="pages-title section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pages-title-text text-center">
+                    <h2>{{typename}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pages-title-end -->
+<!-- shop content section start -->
+<div class="pages products-page section-padding text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="right-products">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="section-title clearfix">
+                                <ul>
+                                    <li>
+                                        <ul class="nav-view">
+                                            <li><a href="product-grid.html"> <i class="mdi mdi-view-module"></i> </a></li>
+                                            <li><a href="product-list.html"> <i class="mdi mdi-view-list"></i> </a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="sort-by floatright">
+                                        Showing 1-12 of 89 Results
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="grid-content">
+                            <div class="col-xs-12 col-sm-6 col-md-3" style="width:25%;height:520px;margin-top:10px" *ngFor="let p of product">
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <div class="pro-type">
+                                            <span>new</span>
+                                        </div>
+                                        <a (click)="goDetail(p['productID'])"><img src="assets/img/product/{{p['typeProduct']['typeName']}}/{{p['images']}}" alt="Product Title" /></a>
+                                        <div class="actions-btn">
+                                            <a href="#"><i class="mdi mdi-cart"></i></a>
+                                            <a href="#" data-toggle="modal" data-target="#quick-view"><i class="mdi mdi-eye"></i></a>
+                                            <a href="#"><i class="mdi mdi-heart"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product-dsc">
+                                        <p><a (click)="goDetail(p['productID'])">{{p['productName']}}</a></p>
+                                        <div class="ratting">
+                                            <i class="mdi mdi-star"></i>
+                                            <i class="mdi mdi-star"></i>
+                                            <i class="mdi mdi-star"></i>
+                                            <i class="mdi mdi-star-half"></i>
+                                            <i class="mdi mdi-star-outline"></i>
+                                        </div>
+                                        <span>{{p['price']|currency:"VND":"symbol"}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- single product end -->
+                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- shop content section end -->
+<!-- footer section start -->
+<footer class="footer-two">
+    <!-- brand logo area start -->
+    <div class="brand-logo">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="barnd-bg">
+                        <a href="#"><img src="assets/img/brand/1.png" alt="Brand Logo" /></a>
+                        <a href="#"><img src="assets/img/brand/2.png" alt="Brand Logo" /></a>
+                        <a href="#"><img src="assets/img/brand/3.png" alt="Brand Logo" /></a>
+                        <a href="#"><img src="assets/img/brand/4.png" alt="Brand Logo" /></a>
+                        <a href="#"><img src="assets/img/brand/5.png" alt="Brand Logo" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- brand logo section end -->

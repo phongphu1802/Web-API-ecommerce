@@ -1,0 +1,123 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Sản phẩm</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row" class="panel-body">
+            <button type="button" class="btn btn-default" style="margin-right: 10px" (click)="getProduct()">Tất cả</button>
+            <button type="button" class="btn btn-primary" style="margin-right: 10px" *ngFor="let p of typeproduct" (click)="getProductbyType(p.typeName)">{{p.typeName}}</button>
+            <button type="button" class="btn btn-warning" style="margin-right: 10px; float:right" (click)="popup_addproduct()">Thêm sản phẩm</button>
+        </div>
+        <!-- popup thêm sp -->
+        <form id="addProduct" #addProduct="ngForm" *ngIf="!isToggle" class="row" style="border: 2px solid; border-radius: 20px; margin: 10px; border-style: dotted; border-width: 1px;">
+            <div class="col-md-12">
+                <div class="col-md-12 from">
+                    <h4 style="margin-left: 45%">Thêm Sản Phẩm</h4>
+                    <div class="col-md-6" >
+                        <div class="form-group">
+                            <input class="form-control" type="text" ngModel name="productname" id="productname" required minlegth = "3" #productname="ngModel" placeholder="Tên sản phẩm..." aria-describedby="productnameHId"/>
+                            <small id="productnameHId" *ngIf="!productname?.valid && (productname?.dirty || productname?.touched)" class="text-muted">Tên không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" type="text" ngModel name="info" id="info" required minlegth = "6" #info="ngModel" placeholder="Thông tin giới thiệu sản phẩm..." aria-describedby="infoHId"></textarea>
+                            <small id="infoHId" *ngIf="!info?.valid && (info?.dirty || info?.touched)" class="text-muted">Thông tin sản phẩm không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">VNĐ</span>
+                                <input type="number" class="form-control" ngModel name="price" id="price" required minlegth = "6" #price="ngModel" placeholder="Giá bán sản phẩm..." aria-describedby="priceHId">
+                                <span class="input-group-addon">.00</span>
+                            </div>
+                            <small id="priceHId" *ngIf="!price?.valid && (price?.dirty || price?.touched)" class="text-muted">Giá bán không được trống</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6" >
+                        <div class="form-group">
+                            <select class="form-control" name="typeproduct" id="typeproduct">
+                                <option>Chọn loại sản phẩm</option>
+                                <option *ngFor="let p of typeproduct" value="p['typeProductID']">{{p.typeName}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="number" ngModel name="quantity" id="quantity" required minlegth = "1" #quantity="ngModel" placeholder="Số lượng sản phẩm..." aria-describedby="productnameHId"/>
+                            <small id="quantityHId" *ngIf="!quantity?.valid && (quantity?.dirty || quantity?.touched)" class="text-muted">Số lượng không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="file" name="image" id="image"  type="file" multiple accept="image/png,image/jpg"  (change)="onFileChanged($event)">
+                        </div>
+                    </div>
+			        <div class="submit-text col-md-12" style="margin-bottom: 20px;">
+                        <button class="btn btn-warning col-md-3" style="margin-left: 37%" (click)="addProductToDatabase()">Thêm sản phẩm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+		<div class="row">
+            <div class="col-md-12">
+                <div class=" col-md-12 table-wrap">
+                    <table class="table">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Thông tin</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Trạng thái</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="alert" role="alert" *ngFor="let p of product">
+                            <td>
+                                <div class="img"><img src="assets/img/product/{{p['typeProduct']['typeName']}}/{{p['images']}}" width="75px" height="100px"/></div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{p['productName']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{p['info']}}
+                                </div>
+                            </td>
+                            <td>
+                                {{p['price']}}
+                            </td>
+                            <td>
+                                {{p['quantity']}}
+                            </td>   
+                            <td>
+                                <div class="email" *ngIf="p['state']==1" style="color: green;">
+                                    Đang hoạt động
+                                </div>
+                                <div class="email" *ngIf="p['state']!=1" style="color: red;">
+                                    Đang khóa
+                                </div>
+                            </td>                         
+                            <td>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right:2px">
+                                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                </button>
+                                <button type="button" *ngIf="p['state']!=1" class="close" aria-label="Close" style="margin-right:2px" (click)="UpdateStateUnClock(p['productID'])">
+                                    <span aria-hidden="true"><i class="fa fa-unlock"></i></span>
+                                </button>
+                                <button type="button" *ngIf="p['state']==1"  class="close" aria-label="Close" style="margin-right:2px" (click)="UpdateStateClock(p['productID'])">
+                                    <span aria-hidden="true"><i class="fa fa-lock"></i></span>
+                                </button>
+                                <button type="button" class="close" aria-label="Close" style="margin-right:2px" >
+                                    <span aria-hidden="true"><i class="fa fa-wrench"></i></span>
+                                </button>
+                            </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

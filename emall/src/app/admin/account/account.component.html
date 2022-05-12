@@ -1,0 +1,183 @@
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Tài khoản</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row" class="panel-body">
+            <button type="button" class="btn btn-warning" style="margin-right: 10px; float:right" (click)="popup_addaccount()">Thêm tài khoản</button>
+        </div>
+        <!-- popup thêm tài khoản -->
+        <form id="addAccount" #addAccount="ngForm" *ngIf="!isToggle" class="row" style="border: 2px solid; border-radius: 20px; margin: 10px; border-style: dotted; border-width: 1px;">
+            <div class="col-md-12">
+                <div class="col-md-12 from">
+                    <h4 style="margin-left: 45%">Thêm Tài Khoản</h4>
+                    <div class="col-md-6" >
+                        <div class="form-group">
+                            <input class="form-control" type="text" ngModel name="firstname" id="firstname" required minlegth = "3" #fname="ngModel" placeholder="Nhập họ..." aria-describedby="fnameHId"/>
+                            <small id="fnameHId" *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)" class="text-muted">Họ không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" ngModel name="lastname" id="lastname" required minlegth = "6" #lname="ngModel" placeholder="Nhập tên..." aria-describedby="lnameHId"/>
+                            <small id="lnameHId" *ngIf="!lname?.valid && (lname?.dirty || lname?.touched)" class="text-muted">Tên không được trống</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input class="form-control" type="text" ngModel name="email" id="email" required minlegth = "6" #email="ngModel" placeholder="Địa chỉ Email..." aria-describedby="emailHId"/>
+                            <small id="emailHId" *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="text-muted">Địa chỉ email không được trống</small>
+                        </div>
+                        <div class="form-group"> 
+                            <input class="form-control" type="text" ngModel name="number" id="number" required minlegth = "10" #number="ngModel" placeholder="Số điện thoại..." aria-describedby="numberHId"/>
+                            <small id="numberHId" *ngIf="!number?.valid && (number?.dirty || number?.touched)" class="text-muted">Số điện thoại không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="date" ngModel name="birthday" id="birthday" min="1950-01-01" max="{{date | date:'yyyy-mm-dd'}}" format="yyyy-mm-dd"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6" >
+                        <div class="form-group">
+                            <input class="form-control" type="text" ngModel name="address" id="address" required minlegth = "10" #address="ngModel" placeholder="Địa chỉ..." aria-describedby="addressHId"/>
+                            <small id="addressHId" *ngIf="!address?.valid && (address?.dirty || address?.touched)" class="text-muted">Địa chỉ không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" ngModel name="username" id="username" required minlegth = "10" #username="ngModel" placeholder="Tài khoản đăng nhập..." aria-describedby="usernameHId"/>
+                            <small id="usernameHId" *ngIf="!username?.valid && (username?.dirty || username?.touched)" class="text-muted">Tên đăng nhập không được trống</small>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" ngModel name="password1" id="password1" placeholder="Password" #signup.password1="ngModel" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" ngModel name="password2" id="password2" placeholder="Confirm Password" #signup.password2="ngModel" password-match="signup.password1" aria-describedby="Confirm"/>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="typemember" id="typemember">
+                                <option>Chọn loại người dùng</option>
+                                <option *ngFor="let t of typemember" value="t['typeMemberID']">{{t.typeName}}</option>
+                            </select>
+                        </div>
+                    </div>
+			        <div class="submit-text col-md-12" style="margin-bottom: 20px;">
+                        <button class="btn btn-warning col-md-3" style="margin-left: 37%" (click)="insertAccount()">Thêm tài khoản</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- popup sửa tài khoản -->
+        <form [formGroup]="reAccount" *ngIf="!isTogglere" class="row" style="border: 2px solid; border-radius: 20px; margin: 10px; border-style: dotted; border-width: 1px;" >
+            <div class="col-md-12">
+                <div class="col-md-12 from">
+                    <h4 style="margin-left: 45%">Sửa Tài Khoản</h4>
+                    <div class="col-md-6" >
+                        <div class="form-group"><input class="form-control" type="text" formControlName="refirstname" name="refirstname" id="refirstname" required minlegth = "3"  placeholder="Nhập họ...">
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" formControlName="relastname" name="relastname" id="relastname" required minlegth = "6"  placeholder="Nhập tên...">
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" formControlName="remail" name="remail" id="remail" required minlegth = "6"  placeholder="Địa chỉ Email..."/>
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" formControlName="renumber" name="renumber" id="renumber" required minlegth = "10" readonly>
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" formControlName="rebirthday" name="rebirthday" id="rebirthday" readonly/>
+                        </div>
+                    </div>
+                    <div class="col-md-6" >
+                        <div class="form-group"><input class="form-control" type="text" formControlName="readdress" name="readdress" id="readdress" required minlegth = "10" placeholder="Địa chỉ..."/>
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" formControlName="reusername" name="reusername" id="reusername" required minlegth = "10" readonly>
+                        </div>
+                        <div class="form-group"><input class="form-control" type="password" formControlName="repassword1" name="repassword1" id="repassword1" placeholder="Password"/>
+                        </div>
+                        <div class="form-group"><input class="form-control" type="text" formControlName="retypemember" name="retypemember" id="retypemember" readonly/>
+                        </div>
+                    </div>
+			        <div class="submit-text col-md-12" style="margin-bottom: 20px;">
+                        <button class="btn btn-warning col-md-3" style="margin-left: 37%" (click)="updateAccount(reAccount.value)">Sửa tài khoản</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+		<div class="row">
+            <div class="col-md-12">
+                <div class=" col-md-12 table-wrap">
+                    <table class="table">
+                    <thead class="thead-primary">
+                        <tr>
+                            <th>Tên tài khoản</th>
+                            <th>Họ</th>
+                            <th>Tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th>Ngày sinh</th>
+                            <th>Quyền tài khoản</th>
+                            <th>Trạng thái</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="alert" role="alert" *ngFor="let a of account">
+                            <td>
+                                <div class="email">
+                                    {{a['email']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{a['userID']['firstname']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{a['userID']['lastname']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{a['userID']['phone']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{a['userID']['address']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{a['userID']['birthday']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email">
+                                    {{a['userID']['typeMember']['typeName']}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="email" *ngIf="a['state']==1" style="color: green;">
+                                    Đang hoạt động
+                                </div>
+                                <div class="email" *ngIf="a['state']!=1" style="color: red;">
+                                    Đang khóa
+                                </div>
+                            </td>          
+                            <td>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-right:2px">
+                                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                </button>
+                                <button type="button" *ngIf="a['state']!=1" class="close" aria-label="Close" style="margin-right:2px" (click)="UpdateStateUnClock(a['accountID'])">
+                                    <span aria-hidden="true"><i class="fa fa-unlock"></i></span>
+                                </button>
+                                <button type="button" *ngIf="a['state']==1"  class="close" aria-label="Close" style="margin-right:2px" (click)="UpdateStateClock(a['accountID'])">
+                                    <span aria-hidden="true"><i class="fa fa-lock"></i></span>
+                                </button>
+                                <button type="button" class="close" aria-label="Close" style="margin-right:2px" (click)="popup_repairaccount(a['accountID'])">
+                                    <span aria-hidden="true"><i class="fa fa-wrench"></i></span>
+                                </button>
+                            </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

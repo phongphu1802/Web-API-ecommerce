@@ -1,0 +1,57 @@
+<!-- pages-title-start -->
+<div class="pages-title section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pages-title-text text-center">
+                    <h2>My Account</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pages-title-end -->
+<!-- My account content section start -->
+<section class="pages my-account-page section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="padding60">
+                    <div class="log-title">
+                        <h3><strong>My Account</strong></h3>
+                    </div>
+                    <div class="prament-area main-input">
+                        <ul class="panel-group" id="accordion">
+                            <li class="panel">
+                                <div id="collapse1" class="panel-collapse collapse in">
+                                    <div class="single-log-info">
+                                        <div class="custom-input">
+                                            <form action="mail.php" method="post">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="firstname" id="firstname" value="{{userdetail['firstname']}}" placeholder="First Name" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <input type="text" name="lastname" id="lastname" value="{{userdetail['lastname']}}" placeholder="Last Name" />
+                                                    </div>
+                                                </div>
+                                                <input type="text" name="email" id="email" value="{{userdetail['gmail']}}" placeholder="Email Address" />
+                                                <input type="text" name="address" id="address" value="{{userdetail['address']}}" placeholder="Address" />
+                                                <input type="text" name="phone" id="phone" value="{{userdetail['phone']}}" placeholder="Mobile Phone" />
+                                                <input type="date" name="birthday" id="birthday" value="{{userdetail['birthday']}}"/>
+                                                <div class="submit-text">
+                                                    <a href="#">Save</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- my account content section end -->

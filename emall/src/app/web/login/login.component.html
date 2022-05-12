@@ -1,0 +1,61 @@
+<!-- login content section start -->
+<section class="pages login-page section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="main-input padding60">
+                    <div class="log-title">
+                        <h3><strong>Khách hàng đã đăng ký</strong></h3>
+                    </div>
+                    <div class="login-text">
+                        <div class="custom-input">
+                            <p>Nếu bạn có tài khoản, vui lòng đăng nhập với tài khoản đó!</p>
+                            <form id="loginForm" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                                <input type="text" ngModel name="email" id="email" required minlegth = "6" #email="ngModel" placeholder="example@gmail.com" aria-describedby="emailHId">
+                                <small id="emailHId" *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="text-muted">Email không được trống</small>
+                                <input type="password" ngModel name="password" id="password" #password="ngModel" placeholder="Password" aria-describedby="passwordHId"/>
+                                <small  *ngIf="!password?.valid && (password?.dirty||password?.touched) " id="passwordHId" class="text-muted">Password sai hoặc rỗng</small>
+                                <a class="forget" href="#">Bạn quên mật khẩu?</a>
+                                <div class="submit-text">
+                                    <button class="btn btn-primary">Đăng nhập</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="main-input padding60 new-customer">
+                    <div class="log-title">
+                        <h3><strong>Đăng ký người dùng mới</strong></h3>
+                    </div>
+                    <div class="custom-input">
+                        <form id="registeForm" (ngSubmit)="onSubmitRegister()" #registeForm="ngForm">
+                            <input class="form-control" type="text" ngModel name="firstname" id="firstname" required minlegth = "3" #fname="ngModel" placeholder="Nhập họ..." aria-describedby="fnameHId"/>
+                            <small id="fnameHId" *ngIf="!fname?.valid && (fname?.dirty || fname?.touched)" class="text-muted">Họ không được trống</small>
+                            <input class="form-control" type="text" ngModel name="lastname" id="lastname" required minlegth = "6" #lname="ngModel" placeholder="Nhập tên..." aria-describedby="lnameHId"/>
+                            <small id="lnameHId" *ngIf="!lname?.valid && (lname?.dirty || lname?.touched)" class="text-muted">Tên không được trống</small>
+                            <input class="form-control" type="text" ngModel name="emailre" id="emailre" required minlegth = "6" #emailre="ngModel" placeholder="Địa chỉ Email..." aria-describedby="emailreHId"/>
+                            <small id="emailreHId" *ngIf="!emailre?.valid && (emailre?.dirty || emailre?.touched)" class="text-muted">Địa chỉ email không được trống</small>
+                            <input type="text" ngModel name="number" id="number" required minlegth = "10" #number="ngModel" placeholder="Phone Number.." aria-describedby="numberHId"/>
+                            <small id="numberHId" *ngIf="!number?.valid && (number?.dirty || number?.touched)" class="text-muted">Số điện thoại không được trống</small>
+                            <input type="date" ngModel name="birthday" id="birthday" min="1950-01-01" max="{{date | date:'yyyy-mm-dd'}}" format="yyyy-mm-dd"/>
+                            <input class="form-control" type="text" ngModel name="address" id="address" required minlegth = "10" #address="ngModel" placeholder="Địa chỉ..." aria-describedby="addressHId"/>
+                            <small id="addressHId" *ngIf="!address?.valid && (address?.dirty || address?.touched)" class="text-muted">Địa chỉ không được trống</small>
+                            <input type="text" ngModel name="username" id="username" required minlegth = "10" #username="ngModel" placeholder="username" aria-describedby="usernameHId"/>
+                            <small id="usernameHId" *ngIf="!username?.valid && (username?.dirty || username?.touched)" class="text-muted">Tên đăng nhập không được trống</small>
+                            <input type="password" ngModel name="password1" id="password1" placeholder="Password" #signuppassword1="ngModel" aria-describedby="password1HId"/>
+                            <small id="password1HId" *ngIf="!signuppassword1?.valid && (signuppassword1?.dirty || signuppassword1?.touched)" class="text-muted">Mật khẩu không được trống</small>
+                            <input type="password" ngModel name="password2" id="password2" placeholder="Confirm Password" #signuppassword2="ngModel" password-match="signup.password1" aria-describedby="password2HId"/>                                
+			                <small id="password2HId" *ngIf="!signuppassword2?.valid && (signuppassword2?.dirty || signuppassword2?.touched)" class="text-muted">Mật khẩu nhập lại không được trống</small>
+                            <div class="submit-text">
+                                <button class="btn btn-primary">Đăng ký</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- login content section end -->
